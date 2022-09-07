@@ -53,5 +53,12 @@ namespace TestProject
             string actual = address.SortBasedOnNameInDataTable("Bhilai");
             Assert.AreEqual(expected, actual);
         }
+        [Test]
+        public void GivenCountQuery_BasedOnCityandState_returnString()
+        {
+            string expected = "1 1 ";
+            string actual = address.RetrieveCountBasedOnType();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
