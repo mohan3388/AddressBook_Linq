@@ -25,5 +25,12 @@ namespace TestProject
             int actual = address.EditInDataTable("Sahu", "Firstname");
             Assert.AreEqual(actual, expected);
         }
+        [Test]
+        public void GivenDeleteQuery_returnInteger()
+        {
+            int expected = 1;
+            int actual = address.DeleteRowInDataTable("Kshma");
+            Assert.AreEqual(actual, expected);
+        }
     }
 }
