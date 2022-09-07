@@ -32,5 +32,14 @@ namespace TestProject
             int actual = address.DeleteRowInDataTable("Kshma");
             Assert.AreEqual(actual, expected);
         }
+        [Test]
+        public void GivenRetrieveQuery_BasedOnCityandState_returnString()
+        {
+            string expected = "Mohan Sahu";
+            string actual = address.RetrieveBasedOnCityorState("Bhilai", "CG");
+            Assert.AreEqual(expected, actual);
+        }
+       
+
     }
 }

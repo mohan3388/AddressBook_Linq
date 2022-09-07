@@ -129,7 +129,7 @@ namespace AddressBook
         }
         public int DeleteRowInDataTable(string FirstName)
         {
-            AddValues();
+            AddDataInDatatable();
             var modifiedList = (from ContactList in dataTable.AsEnumerable() where ContactList.Field<string>("FirstName") == FirstName select ContactList).FirstOrDefault();
             if (modifiedList != null)
             {
@@ -142,6 +142,18 @@ namespace AddressBook
             {
                 return 0;
             }
+        }
+        public string RetrieveBasedOnCityorState(string City, string State)
+        {
+            AddDataInDatatable();
+            string nameList = "";
+            var modifiedList = (from ContactList in dataTable.AsEnumerable() where (ContactList.Field<string>("State") == State || ContactList.Field<string>("City") == City) select ContactList);
+            foreach (var dtRows in modifiedList)
+            {
+                nameList += dtRows["FirstName"] + " ";
+                Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \t {8}\n", dtRows["ID"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+            }
+            return nameList;
         }
     }
 }
